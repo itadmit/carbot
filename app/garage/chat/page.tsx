@@ -61,9 +61,9 @@ export default function GarageChatPage() {
   return (
     <div className="max-w-4xl mx-auto">
       <div className="card mb-6">
-        <h1 className="text-2xl font-bold text-gray-900 mb-2">צ'אטבוט חכם</h1>
+        <h1 className="text-2xl font-bold text-gray-900 mb-2">צ&apos;אטבוט חכם</h1>
         <p className="text-gray-600">
-          פתח בקשה חדשה לחלקי חילוף באמצעות הצ'אטבוט
+          פתח בקשה חדשה לחלקי חילוף באמצעות הצ&apos;אטבוט
         </p>
       </div>
 

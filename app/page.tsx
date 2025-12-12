@@ -36,9 +36,9 @@ export default async function Home() {
         <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="card">
             <div className="text-4xl mb-4">🤖</div>
-            <h3 className="text-xl font-semibold mb-2">צ'אטבוט חכם</h3>
+            <h3 className="text-xl font-semibold mb-2">צ&apos;אטבוט חכם</h3>
             <p className="text-gray-600">
-              פתיחת בקשות לחלקים בקלות באמצעות צ'אטבוט מתקדם
+              פתיחת בקשות לחלקים בקלות באמצעות צ&apos;אטבוט מתקדם
             </p>
           </div>
           <div className="card">

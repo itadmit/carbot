@@ -97,7 +97,7 @@ export default async function GarageDashboard() {
               <MessageSquare className="text-blue-600 ml-3" size={24} />
               <div>
                 <p className="font-medium text-gray-900">פתח בקשה חדשה</p>
-                <p className="text-sm text-gray-600">דרך הצ'אטבוט החכם</p>
+                <p className="text-sm text-gray-600">דרך הצ&apos;אטבוט החכם</p>
               </div>
             </Link>
             <Link

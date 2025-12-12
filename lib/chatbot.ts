@@ -28,14 +28,9 @@ export function getChatbotResponse(state: ChatbotState, userInput: string): {
       const licensePlate = userInput.trim().replace(/[\s-]/g, "")
       if (licensePlate.length >= 7 && licensePlate.length <= 8) {
         newState.licensePlate = licensePlate
-        // In real app, lookup vehicle here
-        message = `🔍 מצאתי רכב:\nיצרן: Mazda\nדגם: 3\nשנה: 2018\n\nהאם זה נכון? (כן/לא)`
+        // Vehicle lookup will be done in the API route
+        message = `🔍 מחפש רכב עם מספר רישוי ${licensePlate}...`
         newState.step = "confirm_vehicle"
-        newState.vehicleData = {
-          manufacturer: "Mazda",
-          model: "3",
-          year: 2018,
-        }
       } else {
         message = "❌ מספר רישוי לא תקין. אנא הזן מספר רישוי בן 7-8 ספרות:"
       }
@@ -68,10 +63,9 @@ export function getChatbotResponse(state: ChatbotState, userInput: string): {
     case "confirm_request":
       const sendConfirmed = userInput.toLowerCase().includes("כן") || userInput.toLowerCase().includes("yes")
       if (sendConfirmed) {
-        message = "✅ הבקשה נשלחה בהצלחה! תקבל עדכונים על הצעות דרך WhatsApp."
-        newState = {
-          step: "welcome",
-        }
+        // Request creation will be handled in the API route
+        message = "שולח בקשה..."
+        // Keep state - API will handle creation
       } else {
         message = "הבקשה בוטלה. תוכל להתחיל מחדש."
         newState = {

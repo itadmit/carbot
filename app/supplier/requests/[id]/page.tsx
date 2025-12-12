@@ -70,7 +70,7 @@ export default function SupplierRequestDetailPage() {
     setTotalPrice(total)
   }, [parts])
 
-  const handlePartChange = (index: number, field: keyof PartOffer, value: any) => {
+  const handlePartChange = (index: number, field: keyof PartOffer, value: string | number | boolean) => {
     const newParts = [...parts]
     newParts[index] = { ...newParts[index], [field]: value }
     setParts(newParts)

@@ -37,7 +37,7 @@ export async function POST(req: NextRequest) {
         email: validated.email,
         password: hashedPassword,
         name: validated.name,
-        phone: validated.phone,
+        ...(validated.phone && { phone: validated.phone }),
         role: validated.role,
       },
     })

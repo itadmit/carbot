@@ -8,7 +8,7 @@ import { ArrowRight, Phone, Mail, Calendar, DollarSign } from "lucide-react"
 export default async function RequestDetailPage({
   params,
 }: {
-  params: { id: string }
+  params: Promise<{ id: string }>
 }) {
   const session = await getServerSession(authOptions)
 
@@ -16,8 +16,9 @@ export default async function RequestDetailPage({
     redirect("/login")
   }
 
+  const { id } = await params
   const request = await prisma.request.findUnique({
-    where: { id: params.id },
+    where: { id },
     include: {
       vehicle: true,
       garage: true,
