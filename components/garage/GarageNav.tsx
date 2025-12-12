@@ -15,16 +15,16 @@ export function GarageNav() {
   ]
 
   return (
-    <nav className="bg-white shadow-lg border-b border-gray-200">
+    <nav className="bg-white/90 backdrop-blur-md sticky top-0 z-40 border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
-          <div className="flex">
+          <div className="flex items-center">
             <div className="flex-shrink-0 flex items-center">
-              <Link href="/garage" className="text-2xl font-bold text-blue-600">
-                🚗 CarBot
+              <Link href="/garage" className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+                CarBot
               </Link>
             </div>
-            <div className="hidden sm:ml-6 sm:flex sm:space-x-8 sm:space-x-reverse">
+            <div className="hidden sm:ml-8 sm:flex sm:space-x-8 sm:space-x-reverse">
               {navItems.map((item) => {
                 const Icon = item.icon
                 const isActive = pathname === item.href || 
@@ -36,8 +36,8 @@ export function GarageNav() {
                     href={item.href}
                     className={`inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors ${
                       isActive
-                        ? "border-blue-500 text-gray-900"
-                        : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700"
+                        ? "border-blue-600 text-blue-600"
+                        : "border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300"
                     }`}
                   >
                     <Icon size={18} className="ml-2" />
@@ -50,7 +50,7 @@ export function GarageNav() {
           <div className="flex items-center">
             <button
               onClick={() => signOut({ callbackUrl: "/" })}
-              className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-gray-700 bg-gray-100 hover:bg-gray-200 transition-colors"
+              className="inline-flex items-center px-4 py-2 border border-slate-200 text-sm font-medium rounded-lg text-slate-700 bg-white hover:bg-slate-50 transition-colors shadow-sm"
             >
               <LogOut size={18} className="ml-2" />
               התנתק
@@ -61,4 +61,3 @@ export function GarageNav() {
     </nav>
   )
 }
-
