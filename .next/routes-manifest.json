@@ -1,1 +1,154 @@
-{"version":3,"caseSensitive":false,"basePath":"","rewrites":{"beforeFiles":[],"afterFiles":[],"fallback":[]},"redirects":[{"source":"/:path+/","destination":"/:path+","permanent":true,"internal":true,"regex":"^(?:\\/((?:[^\\/]+?)(?:\\/(?:[^\\/]+?))*))\\/$"}],"headers":[]}
+{
+  "version": 3,
+  "pages404": true,
+  "caseSensitive": false,
+  "basePath": "",
+  "redirects": [
+    {
+      "source": "/:path+/",
+      "destination": "/:path+",
+      "internal": true,
+      "statusCode": 308,
+      "regex": "^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))/$"
+    }
+  ],
+  "headers": [],
+  "rewrites": {
+    "beforeFiles": [],
+    "afterFiles": [],
+    "fallback": []
+  },
+  "dynamicRoutes": [
+    {
+      "page": "/api/auth/[...nextauth]",
+      "regex": "^/api/auth/(.+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPnextauth": "nxtPnextauth"
+      },
+      "namedRegex": "^/api/auth/(?<nxtPnextauth>.+?)(?:/)?$"
+    },
+    {
+      "page": "/api/garage/requests/[id]",
+      "regex": "^/api/garage/requests/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/api/garage/requests/(?<nxtPid>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/api/supplier/requests/[id]",
+      "regex": "^/api/supplier/requests/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/api/supplier/requests/(?<nxtPid>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/garage/requests/[id]",
+      "regex": "^/garage/requests/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/garage/requests/(?<nxtPid>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/supplier/requests/[id]",
+      "regex": "^/supplier/requests/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/supplier/requests/(?<nxtPid>[^/]+?)(?:/)?$"
+    }
+  ],
+  "staticRoutes": [
+    {
+      "page": "/",
+      "regex": "^/(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/(?:/)?$"
+    },
+    {
+      "page": "/_not-found",
+      "regex": "^/_not\\-found(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/_not\\-found(?:/)?$"
+    },
+    {
+      "page": "/dashboard",
+      "regex": "^/dashboard(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/dashboard(?:/)?$"
+    },
+    {
+      "page": "/garage",
+      "regex": "^/garage(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/garage(?:/)?$"
+    },
+    {
+      "page": "/garage/chat",
+      "regex": "^/garage/chat(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/garage/chat(?:/)?$"
+    },
+    {
+      "page": "/garage/requests",
+      "regex": "^/garage/requests(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/garage/requests(?:/)?$"
+    },
+    {
+      "page": "/login",
+      "regex": "^/login(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/login(?:/)?$"
+    },
+    {
+      "page": "/register",
+      "regex": "^/register(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/register(?:/)?$"
+    },
+    {
+      "page": "/supplier",
+      "regex": "^/supplier(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/supplier(?:/)?$"
+    },
+    {
+      "page": "/supplier/offers",
+      "regex": "^/supplier/offers(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/supplier/offers(?:/)?$"
+    },
+    {
+      "page": "/supplier/requests",
+      "regex": "^/supplier/requests(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/supplier/requests(?:/)?$"
+    },
+    {
+      "page": "/supplier/settings",
+      "regex": "^/supplier/settings(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/supplier/settings(?:/)?$"
+    }
+  ],
+  "dataRoutes": [],
+  "rsc": {
+    "header": "rsc",
+    "varyHeader": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch",
+    "prefetchHeader": "next-router-prefetch",
+    "didPostponeHeader": "x-nextjs-postponed",
+    "contentTypeHeader": "text/x-component",
+    "suffix": ".rsc",
+    "prefetchSuffix": ".prefetch.rsc",
+    "prefetchSegmentHeader": "next-router-segment-prefetch",
+    "prefetchSegmentSuffix": ".segment.rsc",
+    "prefetchSegmentDirSuffix": ".segments"
+  },
+  "rewriteHeaders": {
+    "pathHeader": "x-nextjs-rewritten-path",
+    "queryHeader": "x-nextjs-rewritten-query"
+  }
+}

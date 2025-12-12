@@ -1,5 +1,26 @@
 {
+  "/_not-found/page": "app/_not-found/page.js",
   "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js",
+  "/api/auth/register/route": "app/api/auth/register/route.js",
+  "/api/chat/route": "app/api/chat/route.js",
+  "/api/garage/requests/[id]/route": "app/api/garage/requests/[id]/route.js",
+  "/api/garage/requests/route": "app/api/garage/requests/route.js",
+  "/api/supplier/offers/route": "app/api/supplier/offers/route.js",
+  "/api/supplier/preferences/route": "app/api/supplier/preferences/route.js",
+  "/api/supplier/requests/[id]/route": "app/api/supplier/requests/[id]/route.js",
+  "/api/supplier/requests/route": "app/api/supplier/requests/route.js",
+  "/api/vehicle/lookup/route": "app/api/vehicle/lookup/route.js",
+  "/(auth)/login/page": "app/(auth)/login/page.js",
+  "/(auth)/register/page": "app/(auth)/register/page.js",
+  "/dashboard/page": "app/dashboard/page.js",
   "/page": "app/page.js",
-  "/(auth)/login/page": "app/(auth)/login/page.js"
+  "/garage/chat/page": "app/garage/chat/page.js",
+  "/garage/page": "app/garage/page.js",
+  "/garage/requests/[id]/page": "app/garage/requests/[id]/page.js",
+  "/garage/requests/page": "app/garage/requests/page.js",
+  "/supplier/offers/page": "app/supplier/offers/page.js",
+  "/supplier/page": "app/supplier/page.js",
+  "/supplier/requests/page": "app/supplier/requests/page.js",
+  "/supplier/requests/[id]/page": "app/supplier/requests/[id]/page.js",
+  "/supplier/settings/page": "app/supplier/settings/page.js"
 }

@@ -62,7 +62,7 @@ export default async function Home() {
           
           <p className="text-xl text-slate-600 max-w-2xl mx-auto mb-10 leading-relaxed animate-slide-up [animation-delay:100ms]">
             מערכת SaaS מתקדמת המחברת בין מוסכים לספקים בזמן אמת.
-            חיפוש אוטומטי, צ'אטבוט חכם וניהול הצעות מחיר במקום אחד.
+            חיפוש אוטומטי, צ&apos;אטבוט חכם וניהול הצעות מחיר במקום אחד.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-slide-up [animation-delay:200ms]">
