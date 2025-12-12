@@ -1,0 +1,99 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  GARAGE
+  SUPPLIER
+  ADMIN
+}
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  password      String
+  name          String
+  phone         String?
+  role          UserRole  @default(GARAGE)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  
+  // Garage relations
+  garageRequests Request[] @relation("GarageRequests")
+  
+  // Supplier relations
+  supplierPreferences SupplierPreference?
+  supplierOffers      Offer[]
+  
+  @@map("users")
+}
+
+model Vehicle {
+  id          String   @id @default(cuid())
+  licensePlate String  @unique
+  manufacturer String
+  model        String
+  year         Int?
+  createdAt    DateTime @default(now())
+  
+  requests     Request[]
+  
+  @@map("vehicles")
+}
+
+model Request {
+  id            String   @id @default(cuid())
+  garageId      String
+  vehicleId     String
+  parts         String   // JSON array of parts
+  description   String?
+  status        String   @default("open") // open, closed, cancelled
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  
+  garage        User     @relation("GarageRequests", fields: [garageId], references: [id])
+  vehicle       Vehicle  @relation(fields: [vehicleId], references: [id])
+  offers        Offer[]
+  
+  @@map("requests")
+}
+
+model Offer {
+  id            String   @id @default(cuid())
+  requestId     String
+  supplierId    String
+  parts         String   // JSON array with parts and prices
+  totalPrice    Float?
+  notes         String?
+  status        String   @default("pending") // pending, accepted, rejected
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  
+  request       Request  @relation(fields: [requestId], references: [id])
+  supplier      User     @relation(fields: [supplierId], references: [id])
+  
+  @@map("offers")
+}
+
+model SupplierPreference {
+  id            String   @id @default(cuid())
+  supplierId    String   @unique
+  manufacturers String? // JSON array
+  models        String? // JSON array
+  regions       String? // JSON array
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  
+  supplier      User     @relation(fields: [supplierId], references: [id])
+  
+  @@map("supplier_preferences")
+}
+

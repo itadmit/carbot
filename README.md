@@ -5,12 +5,14 @@
 ## 🚀 תכונות עיקריות
 
 ### למוסכים (Garages)
+
 - 🤖 **צ'אטבוט חכם** - פתיחת בקשות לחלקים בקלות
 - 🔍 **חיפוש רכב אוטומטי** - שליפת נתונים לפי מספר רישוי
 - 📋 **ניהול בקשות** - צפייה בכל הבקשות וההצעות
 - 📲 **התראות WhatsApp** - עדכונים על הצעות חדשות
 
 ### לספקים (Suppliers)
+
 - 🎯 **התאמה חכמה** - קבלת בקשות רלוונטיות בלבד
 - 💰 **שליחת הצעות מחיר** - ממשק קל לשליחת הצעות
 - ⚙️ **הגדרת העדפות** - בחירת יצרנים, דגמים ואזורים
@@ -21,7 +23,7 @@
 - **Next.js 15** - App Router + Server Components
 - **TypeScript** - קוד מוקלד ובטוח
 - **Prisma ORM** - ניהול מסד נתונים
-- **PostgreSQL/MySQL** - מסד נתונים
+- **SQLite** - מסד נתונים (ניתן להחליף ל-PostgreSQL/MySQL)
 - **NextAuth.js** - אימות משתמשים
 - **Tailwind CSS** - עיצוב מודרני עם תמיכה ב-RTL
 - **RappelSend API** - שליחת הודעות WhatsApp
@@ -30,26 +32,29 @@
 ## 📦 התקנה
 
 ### 1. שכפול הפרויקט
+
 ```bash
-git clone <repository-url>
+git clone https://github.com/itadmit/carbot.git
 cd carbotnext
 ```
 
 ### 2. התקנת חבילות
+
 ```bash
 npm install
 ```
 
 ### 3. הגדרת משתני סביבה
+
 העתק את `.env.example` ל-`.env` וערוך:
 
 ```env
 # Database
-DATABASE_URL="postgresql://user:password@localhost:5432/carbot"
+DATABASE_URL="file:./prisma/carbot.db"
 
 # NextAuth
 NEXTAUTH_URL="http://localhost:3000"
-NEXTAUTH_SECRET="your-secret-key-here"
+NEXTAUTH_SECRET="your-secret-key-here-generate-with-openssl-rand-base64-32"
 
 # RappelSend WhatsApp API
 RAPPEL_CLIENT_ID="your-client-id"
@@ -57,6 +62,7 @@ RAPPEL_API_KEY="your-api-key"
 ```
 
 ### 4. הגדרת מסד הנתונים
+
 ```bash
 # Generate Prisma Client
 npx prisma generate
@@ -69,11 +75,12 @@ npx prisma studio
 ```
 
 ### 5. הרצת השרת
+
 ```bash
 npm run dev
 ```
 
-האתר יהיה זמין ב: `http://localhost:3000`
+האתר יהיה זמין ב: http://localhost:3000
 
 ## 📚 מבנה הפרויקט
 
@@ -115,6 +122,7 @@ carbotnext/
 ## 🔄 תהליך עבודה
 
 ### מוסך פותח בקשה:
+
 1. מתחבר למערכת
 2. נכנס לצ'אטבוט
 3. מזין מספר רכב
@@ -123,11 +131,13 @@ carbotnext/
 6. מאשר - הבקשה נשלחת
 
 ### מערכת מתאימה ספקים:
+
 1. מחפשת ספקים לפי יצרן הרכב
 2. מסננת לפי אזור גיאוגרפי
 3. שולחת WhatsApp לספקים מתאימים
 
 ### ספק שולח הצעה:
+
 1. מקבל התראת WhatsApp
 2. נכנס לדשבורד
 3. צופה בפרטי הבקשה
@@ -135,6 +145,7 @@ carbotnext/
 5. שולח הצעה
 
 ### מוסך מקבל הצעות:
+
 1. מקבל התראת WhatsApp
 2. צופה בכל ההצעות
 3. משווה מחירים
@@ -150,7 +161,7 @@ carbotnext/
 
 ## 📲 אינטגרציית WhatsApp
 
-המערכת משתמשת ב-**RappelSend API** לשליחת הודעות WhatsApp:
+המערכת משתמשת ב-RappelSend API לשליחת הודעות WhatsApp:
 
 ```typescript
 // Example usage
@@ -161,9 +172,10 @@ await sendWhatsApp(
 ```
 
 נשלחות הודעות ב-3 נקודות:
-1. בקשה נוצרה → למוסך
-2. התאמה לספקים → לספקים רלוונטיים
-3. הצעה נשלחה → למוסך
+
+1. **בקשה נוצרה** → למוסך
+2. **התאמה לספקים** → לספקים רלוונטיים
+3. **הצעה נשלחה** → למוסך
 
 ## 🚧 פיתוח עתידי
 
@@ -178,6 +190,7 @@ await sendWhatsApp(
 ## 📝 נתונים לדוגמה (Mock)
 
 המערכת כוללת מספרי רכב לדוגמה:
+
 - `12345678` - Mazda 3 2018
 - `87654321` - Toyota Corolla 2020
 - `11111111` - Mitsubishi Lancer 2017
@@ -187,17 +200,20 @@ await sendWhatsApp(
 ## 👥 תפקידים במערכת
 
 ### GARAGE (מוסך)
+
 - גישה ל-`/garage/*`
 - פתיחת בקשות
 - צפייה בהצעות
 
 ### SUPPLIER (ספק)
+
 - גישה ל-`/supplier/*`
 - צפייה בבקשות מתאימות
 - שליחת הצעות מחיר
 - הגדרת העדפות
 
 ### ADMIN (מנהל)
+
 - גישה ל-`/admin/*` (להכנה בעתיד)
 - ניהול משתמשים
 - צפייה בכל הפעילות
@@ -205,6 +221,7 @@ await sendWhatsApp(
 ## 🐛 בעיות נפוצות
 
 ### בעיות התחברות למסד נתונים
+
 ```bash
 # בדוק את DATABASE_URL ב-.env
 # הרץ migrations
@@ -212,12 +229,14 @@ npx prisma migrate dev
 ```
 
 ### שגיאות Prisma Client
+
 ```bash
 # רענן את Prisma Client
 npx prisma generate
 ```
 
 ### שגיאות NextAuth
+
 ```bash
 # ודא ש-NEXTAUTH_SECRET מוגדר
 # ודא ש-NEXTAUTH_URL נכון
@@ -226,13 +245,11 @@ npx prisma generate
 ## 📞 תמיכה
 
 לשאלות ותמיכה, פנה ל:
+
 - Email: support@carbot.com
 - WhatsApp: 050-1234567
 
 ---
 
-**Built with ❤️ using Next.js and TypeScript**
+Built with ❤️ using Next.js and TypeScript
 
-
-
-# carbot
